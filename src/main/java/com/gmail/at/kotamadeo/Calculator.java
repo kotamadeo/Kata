@@ -22,12 +22,11 @@ public class Calculator {
     private final Scanner scanner = new Scanner(System.in);
 
 
-
     public void start() {
         try {
             System.out.println(Utils.ANSI_GREEN + "Введите ваше выражение в формате: 1 + 1 или I + I:" +
                     Utils.ANSI_RESET);
-            var firstValue = scanner.next(expression.getARABIC() + expression.getOR() +
+            var firstValue = scanner.next(expression.getARABIC()  +
                     expression.getROMAN());
             var operand = scanner.next(expression.getOPERATION());
             var isRoman = firstValue.matches(expression.getROMAN());
@@ -38,7 +37,7 @@ public class Calculator {
                     toArabicFromRoman.applyAsInt(secondValue));
             System.out.printf("%sРезультат выражения %s %s %s равен: %s.%s%n", Utils.ANSI_PURPLE, firstValue, operand,
                     secondValue, toStringArabicNumbers.apply(result), Utils.ANSI_RESET);
-        } catch (InputException e) {
+        } catch (InputMismatchException e) {
             throw new InputException("Ошибка ввода!");
         }
     }
