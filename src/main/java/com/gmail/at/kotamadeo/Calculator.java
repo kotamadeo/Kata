@@ -14,21 +14,19 @@ import java.util.function.ToIntFunction;
 
 public class Calculator {
     private final Map<String, IntBinaryOperator> calculateOperation = Map.of(
-            "-", (x, y) -> x - y,
-            "+", (x, y) -> x + y,
-            "/", (x, y) -> x / y,
-            "*", (x, y) -> x * y);
+            "-", (firstValue, SecondValue) -> firstValue - SecondValue,
+            "+", (firstValue, SecondValue) -> firstValue + SecondValue,
+            "/", (firstValue, SecondValue) -> firstValue / SecondValue,
+            "*", (firstValue, SecondValue) -> firstValue * SecondValue);
     private final Expression expression = new Expression();
     private final Scanner scanner = new Scanner(System.in);
 
-
     public void start() {
+        printMenu();
         try {
-            System.out.println(Utils.ANSI_GREEN + "Введите ваше выражение в формате: 1 + 1 или I + I:" +
-                    Utils.ANSI_RESET);
-            var firstValue = scanner.next(expression.getARABIC()  +
+            var firstValue = scanner.next(expression.getARABIC() + expression.getOR() +
                     expression.getROMAN());
-            var operand = scanner.next(expression.getOPERATION());
+            var operand = scanner.next(expression.getOPERAND());
             var isRoman = firstValue.matches(expression.getROMAN());
             var secondValue = scanner.next(isRoman ? expression.getROMAN() : expression.getARABIC());
             ToIntFunction<String> toArabicFromRoman = isRoman ? Converter::romanToArabicNumbers : Integer::parseInt;
@@ -40,5 +38,9 @@ public class Calculator {
         } catch (InputMismatchException e) {
             throw new InputException("Ошибка ввода!");
         }
+    }
+
+    private void printMenu() {
+        System.out.println(Utils.ANSI_GREEN + "Введите ваше выражение в формате: 1 + 1 или I + I:" + Utils.ANSI_RESET);
     }
 }

@@ -1,8 +1,8 @@
 package com.gmail.at.kotamadeo.exceptions;
 
-import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 
-public class InputException extends InputMismatchException {
+public class InputException extends NoSuchElementException {
     public InputException(String message) {
         super(message);
     }

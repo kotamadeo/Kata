@@ -17,7 +17,7 @@ public class Converter {
                     new String[]{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}[number % 10]
             );
         } else {
-            throw new RomanCalculationException("Ошибка! В римском счете нет отрицательных чисел!");
+            throw new RomanCalculationException("Ошибка! В римской системе счисления нет отрицательных чисел!");
         }
     }
 }
