@@ -5,11 +5,11 @@ import com.gmail.at.kotamadeo.exceptions.RomanCalculationException;
 import java.util.List;
 
 public class Converter {
-    public static int romanToArabicNumbers(final String number) {
+    public static int romanToArabicNumbers(String number) {
         return 1 + List.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X").indexOf(number);
     }
 
-    public static String arabicToRomanNumbers(final int number) throws RomanCalculationException {
+    public static String arabicToRomanNumbers(int number) throws RomanCalculationException {
         if (number > 0) {
             return String.join("",
                     number == 100 ? "C" : "",
@@ -17,7 +17,7 @@ public class Converter {
                     new String[]{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}[number % 10]
             );
         } else {
-            throw new RomanCalculationException("Ошибка! В римских цифрах нет отрицательных чисел!");
+            throw new RomanCalculationException("Ошибка! В римском счете нет отрицательных чисел!");
         }
     }
 }
